@@ -1,0 +1,12 @@
+{
+    "squad": {
+        "random-split": {
+            "train": "",
+            "val": ""
+        },
+        "original-split": {
+            "train": "",
+            "val": ""
+        }
+    }
+}
