@@ -1,7 +1,9 @@
-"""Google Play Review: An Indonesian App Sentiment Analysis."""
+"""Causal QA : """
 
 import json
-import os
+import csv
+import yaml
+
 import datasets
 
 _CAUSALQA_DESCRIPTION = """\
@@ -11,18 +13,22 @@ This dataset is built by xxx for causalqa
 _HOMEPAGE = "https://github.com/jakartaresearch"
 
 ## TODO: Add link to the official dataset URLs here
-all_files = json.load(open('file_url.json'))['files']
+try:
+  all_files = json.load(open('file_url.json'))['files']
+except:
+  all_files = json.load(open('causalqa/file_url.json'))['files']
 
-def OneBuild(url_file):
+def OneBuild(url_file,feat_meta):
     main_name = [*url_file][0]
     submain_name = url_file[main_name].keys()
     all_config = []
     for k in submain_name:
+        fm_temp = feat_meta[main_name][k]
         cqa_config = CausalqaConfig(
           name="{}.{}".format(main_name,k),
           description="",
-          version='',
-          text_features={"xx": "yy"},
+          version=datasets.Version("1.0.0", ""),
+          text_features=fm_temp,
           data_url=url_file[main_name][k],
           citation=""
         )
@@ -37,7 +43,7 @@ class CausalqaConfig(datasets.BuilderConfig):
         text_features,
         data_url,
         citation,
-        **kwargs,
+        **kwargs
     ):
         """BuilderConfig for GLUE.
         Args:
@@ -49,48 +55,73 @@ class CausalqaConfig(datasets.BuilderConfig):
             of the label and processing it to the form required by the label feature
           **kwargs: keyword arguments forwarded to super.
         """
-        super(CausalqaConfig, self).__init__(version=datasets.Version("1.0.0", ""), **kwargs)
+        super(CausalqaConfig, self).__init__(**kwargs)
         self.text_features = text_features
         self.data_url = data_url
         self.citation = citation
 
-# _TRAIN_URL = "https://media.githubusercontent.com/media/jakartaresearch/hf-datasets/main/google-play-review/google-play-review/train.csv"
-# _VAL_URL = "https://media.githubusercontent.com/media/jakartaresearch/hf-datasets/main/google-play-review/google-play-review/validation.csv"
+# with open("features_metadata.yaml", "r") as stream:
+#     try:
+#         fmeta = yaml.safe_load(stream)
+#     except yaml.YAMLError as exc:
+#         print(exc)
 
+# BUILDER_CONFIGS = []
+# for f in all_files:
+#     BUILDER_CONFIGS += (OneBuild(f, fmeta))
+# print(BUILDER_CONFIGS[0].text_features)
 
-# # TODO: Name of the dataset usually match the script name with CamelCase instead of snake_case
 class CausalQA(datasets.GeneratorBasedBuilder):
     """CausalQA: An QA causal type dataset."""
+    with open("causalqa/features_metadata.yaml", "r") as stream:
+        try:
+            fmeta = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+
     BUILDER_CONFIGS = []
     for f in all_files:
-        BUILDER_CONFIGS += (OneBuild(f))
-
+        BUILDER_CONFIGS += (OneBuild(f,fmeta))
 
     def _info(self):
         
-        features = {text_feature: datasets.Value("string") for text_feature in self.config.text_features.keys()} ## It assumes that everything is string
+        features = {feat: datasets.Value(self.config.text_features[feat]) for feat in self.config.text_features} ## It assumes that everything is string
         
         return datasets.DatasetInfo(
             description=_CAUSALQA_DESCRIPTION,
-            features=features,
+            features=datasets.Features(features),
             homepage=_HOMEPAGE
         )
 
-#     def _split_generators(self, dl_manager):
+    def _split_generators(self, dl_manager):
 
-#         train_path = dl_manager.download_and_extract(_TRAIN_URL)
-#         val_path = dl_manager.download_and_extract(_VAL_URL)
-#         return [
-#             datasets.SplitGenerator(name=datasets.Split.TRAIN, gen_kwargs={"filepath": train_path}),
-#             datasets.SplitGenerator(name=datasets.Split.VALIDATION, gen_kwargs={"filepath": val_path})
-#         ]
+        data_train = dl_manager.download(self.config.data_url['train'])
+        data_val = dl_manager.download(self.config.data_url['val'])
+        return [
+            datasets.SplitGenerator(
+                name=datasets.Split.TRAIN,
+                gen_kwargs={
+                    "filepath": data_train ## filepath or data_file?
+                },
+            ),
+            datasets.SplitGenerator(
+                name=datasets.Split.VALIDATION,
+                gen_kwargs={
+                    "filepath": data_val ## keys (as parameters) is used during generate example
+                },
+            )
+        ]
 
-#     # method parameters are unpacked from `gen_kwargs` as given in `_split_generators`
-#     def _generate_examples(self, filepath):
-#         """Generate examples."""
-#         with open(filepath, encoding="utf-8") as csv_file:
-#             csv_reader = csv.reader(csv_file, delimiter=",")
-#             next(csv_reader)
-#             for id_, row in enumerate(csv_reader):
-#                 text, label, stars = row
-#                 yield id_, {"text": text, "label": label, "stars": stars}
+    def _generate_examples(self, filepath):
+        """Generate examples."""
+        with open(filepath, encoding="utf-8") as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=",")
+            next(csv_reader)
+
+            ## the yield depends on files features
+            for id_, row in enumerate(csv_reader):
+                existing_values = row
+                feature_names = ['f'+str(i) for i in range(len(existing_values))]
+                one_example_row =dict(zip(feature_names, existing_values))
+                yield id_, one_example_row
+
