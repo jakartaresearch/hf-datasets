@@ -60,17 +60,6 @@ class CausalqaConfig(datasets.BuilderConfig):
         self.data_url = data_url
         self.citation = citation
 
-# with open("features_metadata.yaml", "r") as stream:
-#     try:
-#         fmeta = yaml.safe_load(stream)
-#     except yaml.YAMLError as exc:
-#         print(exc)
-
-# BUILDER_CONFIGS = []
-# for f in all_files:
-#     BUILDER_CONFIGS += (OneBuild(f, fmeta))
-# print(BUILDER_CONFIGS[0].text_features)
-
 class CausalQA(datasets.GeneratorBasedBuilder):
     """CausalQA: An QA causal type dataset."""
     with open("causalqa/features_metadata.yaml", "r") as stream:
@@ -84,24 +73,23 @@ class CausalQA(datasets.GeneratorBasedBuilder):
         BUILDER_CONFIGS += (OneBuild(f,fmeta))
 
     def _info(self):
-        
-        features = {feat: datasets.Value(self.config.text_features[feat]) for feat in self.config.text_features} ## It assumes that everything is string
+        self.features = {feat: datasets.Value(self.config.text_features[feat]) for feat in self.config.text_features} ## It assumes that everything is string
         
         return datasets.DatasetInfo(
             description=_CAUSALQA_DESCRIPTION,
-            features=datasets.Features(features),
+            features=datasets.Features(self.features),
             homepage=_HOMEPAGE
         )
 
     def _split_generators(self, dl_manager):
-
+        print('run split')
         data_train = dl_manager.download(self.config.data_url['train'])
         data_val = dl_manager.download(self.config.data_url['val'])
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
                 gen_kwargs={
-                    "filepath": data_train ## filepath or data_file?
+                    "filepath": data_train 
                 },
             ),
             datasets.SplitGenerator(
@@ -113,6 +101,7 @@ class CausalQA(datasets.GeneratorBasedBuilder):
         ]
 
     def _generate_examples(self, filepath):
+        print('run generate')
         """Generate examples."""
         with open(filepath, encoding="utf-8") as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=",")
@@ -121,7 +110,6 @@ class CausalQA(datasets.GeneratorBasedBuilder):
             ## the yield depends on files features
             for id_, row in enumerate(csv_reader):
                 existing_values = row
-                feature_names = ['f'+str(i) for i in range(len(existing_values))]
-                one_example_row =dict(zip(feature_names, existing_values))
+                feature_names = list(self.features.keys())
+                one_example_row = dict(zip(feature_names, existing_values))
                 yield id_, one_example_row
-
