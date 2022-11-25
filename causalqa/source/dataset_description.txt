@@ -1,3 +1,0 @@
-This dataset is built by xxx for causalqa
-part1
-part2
