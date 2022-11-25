@@ -1,0 +1,225 @@
+{
+    "homepage": "https://github.com/jakartaresearch",
+    "files": [
+        {
+            "eli5": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=1-FKsZknoDE7bh0fKucs8nNu72IKFxfuo",
+                        "val": "https://drive.google.com/uc?id=108bG1CJMaqANIqLvxthuQvsZro-5qwbX"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=11FfVASpa-Agie4AJfEPdjkR-QrvEO5Sd",
+                        "val": "https://drive.google.com/uc?id=11XlFn79xGSGmPu-TU2SYariQgg2bby2h"
+                    }
+                }
+            }
+        },
+        {
+            "gooaq": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=10A8rPzMECn3s-qXSZRGKnlDMx5h6-U6k",
+                        "val": "https://drive.google.com/uc?id=10PNaYwLxFBfjm2AMM65sp-kRs9rE-8_A"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=10cZ6Kx7v_UHzHkvBgduoiJ7Ny3aeO-Ww",
+                        "val": "https://drive.google.com/uc?id=11YdwCGTaw7jKk612tRc2T6NSYRUgmAjk"
+                    }
+                }
+            }
+        },
+        {
+            "hotpotqa": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=103bDQK53aT1wIFbJqe9B8Usi0_TCROBT",
+                        "val": "https://drive.google.com/uc?id=1-ZSJNCjxdh5wEifkVVseieYYu45tVbEN"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=11GYpcyT98XTomZhQxai5OLrTFoTGrfJJ",
+                        "val": "https://drive.google.com/uc?id=11B-cH_N8VIyLFCyM_l4dWfkOURXf4ky-"
+                    }
+                }
+            }
+        },
+        {
+            "msmarco": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=1-jMNHG6rS9b6TnRZ6iNbjRLXRwr8Znb_",
+                        "val": "https://drive.google.com/uc?id=1-BtYcEWwgaD0aI5hHCHFXCZOZu8I2e8o"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=111RXRWuNk2CMhDbzY2gIudmcB70lsQSy",
+                        "val": "https://drive.google.com/uc?id=11OLGeEkS6Wkv3q5ObNAinim5hqB5UU4D"
+                    }
+                }
+            }
+        },
+        {
+            "naturalquestions": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=1-M_G-V7p0XvGmw3JWtOSfeAlrGLMu8U3",
+                        "val": "https://drive.google.com/uc?id=1-hjnE4TvEp76eznP14DHIsqYnitY0rNW"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=118ALG23_Ayi7qrAAdExJKLiN21Xy7VO5",
+                        "val": "https://drive.google.com/uc?id=11L8JW9llwDI-vg2LSXL4NmnHbOOHETBr"
+                    }
+                }
+            }
+        },
+        {
+            "newsqa": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=1-hvqrR98PcajkorCvFvqz4fcuinZfgvr",
+                        "val": "https://drive.google.com/uc?id=1-oZbc9QFvuDfxzDhwotOYwvcLfFbCJQC"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=11mraicFI6bb6KFcUl3unZxW0OSGg18UB",
+                        "val": "https://drive.google.com/uc?id=10rM5-BYr1mrSVSRFqgiFuQdYvKuCDzD1"
+                    }
+                }
+            }
+        },
+        {
+            "paq": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=10PrKt6kEgq07SNss5rZizRcqQxcxS84X",
+                        "val": "https://drive.google.com/uc?id=1-kuu0RihKcve-EGFtwjYz8jOdN6rXbcM"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=11W8G2mmQ78LBwet5GFvwvNu5hfPWOblN",
+                        "val": "https://drive.google.com/uc?id=10iItHXCfQ9wIsFmDUIMjdXbOSapRCAwj"
+                    }
+                }
+            }
+        },
+        {
+            "searchqa": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=1-AOYSVQf4GI7UnXcZ2EYbDXszHetjdrS",
+                        "val": "https://drive.google.com/uc?id=1-ZCCflByWZ3sBE_Hxirhfy9KQQ8d2ABN"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=11ivqoK_aVjK6RpaT_QWjqJ3V9VMvw190",
+                        "val": "https://drive.google.com/uc?id=11Uvh0s17N7hvwfPF75x0Ko6xdccfsZcl"
+                    }
+                }
+            }
+        },
+        {
+            "squad2": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=10Akh_VNH5Kvp0BiKbq9irA-u5zgdoxPy",
+                        "val": "https://drive.google.com/uc?id=10QszRRFigIz_bAWuhOkn3r3dngHLpDSy"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=110xR1sye2Qx-QrrOPb3IDLhkjLCqG1Zy",
+                        "val": "https://drive.google.com/uc?id=1144-Zt5-b8nFZOgUXbnk7l-RLSHTnJmN"
+                    }
+                }
+            }
+        },
+        {
+            "triviaqa": {
+                "original-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=1-lb4JylW7olUzbLJBaBqNK-HAcxulxEI",
+                        "val": "https://drive.google.com/uc?id=1-T0LHqgSvKyIx6YehQ-TrBOhJqygV-Si"
+                    }
+                },
+                "random-split": {
+                    "description": "",
+                    "version": "1.0.0",
+                    "citation": "",
+                    "url_data": {
+                        "train": "https://drive.google.com/uc?id=11-y9PSfAAP8-L8PtBd_51RaA-5MjsvPH",
+                        "val": "https://drive.google.com/uc?id=11WzPoeBLWbfMyR8xozfl-xMOSqevIIrs"
+                    }
+                }
+            }
+        }
+    ]
+}
