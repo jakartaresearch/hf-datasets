@@ -1,5 +1,6 @@
 # Custom ignore
 *.xlsx
+cerpenmu/cerpenmu/data
 poem-tweets/raw/
 movie-subtitles/data/
 
