@@ -1,8 +1,10 @@
 """Causal QA : """
+import os
 import sys
 import json
 import csv
 import yaml
+import urllib3
 
 import datasets
 
@@ -31,7 +33,7 @@ class CausalqaConfig(datasets.BuilderConfig):
         self.data_url = data_url
         self.citation = citation
 
-def OneBuild(data_info,feat_meta):
+def OneBuild(data_info, feat_meta):
     main_name = [*data_info][0]
     submain_name = data_info[main_name].keys()
     all_config = []
@@ -49,34 +51,39 @@ def OneBuild(data_info,feat_meta):
         all_config.append(cqa_config)
     return all_config
 
-_PATH_SOURCE = 'causalqa/source/'
-_PATH_METADATA = _PATH_SOURCE + 'features_metadata.yaml'
-_FILE_URL = json.load(open(_PATH_SOURCE+'dataset_info.json'))
-_CAUSALQA_DESCRIPTION = ''.join(open(_PATH_SOURCE+'dataset_description.txt').readlines())
-_HOMEPAGE = _FILE_URL['homepage']
-
-all_files = _FILE_URL['files']
 
 class CausalQA(datasets.GeneratorBasedBuilder):
     """CausalQA: An QA causal type dataset."""
-    with open(_PATH_METADATA, "r") as stream:
-        try:
-            fmeta = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+    
+    http = urllib3.PoolManager()
+    
+    _PATH_METADATA_RES = http.request('GET', 'https://huggingface.co/datasets/jakartaresearch/causalqa/raw/main/source/features_metadata.yaml')
+    _FILE_URL_RES = http.request('GET', 'https://huggingface.co/datasets/jakartaresearch/causalqa/raw/main/source/dataset_info.json')
+    _FILE_URL = json.loads(_FILE_URL_RES.data.decode("utf-8"))
+    _PATH_DESCRIPTION_RES = http.request('GET', 'https://huggingface.co/datasets/jakartaresearch/causalqa/raw/main/source/dataset_description.txt')
+    _CAUSALQA_DESCRIPTION = _PATH_DESCRIPTION_RES.data.decode("utf-8")
+
+    _HOMEPAGE = _FILE_URL['homepage']
+    all_files = _FILE_URL['files']
+
+    try:
+        fmeta = yaml.safe_load(_PATH_METADATA_RES.data)
+    except yaml.YAMLError as exc:
+        print(exc)
 
     BUILDER_CONFIGS = []
     for f in all_files:
         BUILDER_CONFIGS += (OneBuild(f, fmeta))
+    
 
     def _info(self):
         self.features = {feat: datasets.Value(self.config.data_features[feat]) 
                          for feat in self.config.data_features}
         
         return datasets.DatasetInfo(
-            description=_CAUSALQA_DESCRIPTION,
+            description=self._CAUSALQA_DESCRIPTION,
             features=datasets.Features(self.features),
-            homepage=_HOMEPAGE
+            homepage=self._HOMEPAGE
         )
 
     def _split_generators(self, dl_manager):
