@@ -1,0 +1,158 @@
+eli5:
+  original-split:
+    id: string
+  random-split:
+    id: string
+gooaq:
+  original-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+hotpotqa:
+  original-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+msmarco:
+  original-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+naturalquestions:
+  original-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+newsqa:
+  original-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+paq:
+  original-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+searchqa:
+  original-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: int64
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+squad2:
+  original-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+triviaqa:
+  original-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
+  random-split:
+    id: string
+    question: string
+    question_processed: string
+    context: string
+    context_processed: string
+    answer: string
+    answer_processed: string
