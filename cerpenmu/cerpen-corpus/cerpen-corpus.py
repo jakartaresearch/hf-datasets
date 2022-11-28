@@ -30,7 +30,7 @@ _HOMEPAGE = "https://github.com/jakartaresearch"
 # TODO: Add link to the official dataset URLs here
 # The HuggingFace Datasets library doesn't host the datasets but only points to the original files.
 # This can be an arbitrary nested dict/list of URLs (see below in `_split_generators` method)
-_TRAIN_URL = "https://media.githubusercontent.com/media/jakartaresearch/hf-datasets/main/cerpenmu/cerpen-corpus/small-cerpen.json"
+_TRAIN_URL = "https://media.githubusercontent.com/media/jakartaresearch/hf-datasets/main/cerpenmu/data/small-cerpen.json"
 
 
 # TODO: Name of the dataset usually match the script name with CamelCase instead of snake_case
